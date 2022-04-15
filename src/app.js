@@ -19,6 +19,11 @@ app.use(express.json({ limit: "10kb" }));
 // ROUTES
 const apiController = require("./controller/apiController");
 app.post("/bfhl", apiController.bfhlController);
+app.get("/", (req, res) => {
+  return res.json({
+    message: "Server running successfully",
+  });
+});
 
 app.all("*", (req, res, next) => {
   return res.status(400).json({
